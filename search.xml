@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>去除特殊的空格</title>
+      <link href="/2024/03/14/qu-chu-te-shu-de-kong-ge/"/>
+      <url>/2024/03/14/qu-chu-te-shu-de-kong-ge/</url>
+      
+        <content type="html"><![CDATA[<h2 id="去除特殊的空格"><a href="#去除特殊的空格" class="headerlink" title="去除特殊的空格"></a>去除特殊的空格</h2><blockquote><p>一般是爬虫的时间会遇到这些奇怪的情况</p></blockquote><h3 id="1、去除字符串首尾的普通空格"><a href="#1、去除字符串首尾的普通空格" class="headerlink" title="1、去除字符串首尾的普通空格"></a>1、去除字符串首尾的普通空格</h3><p>字符串可以使用 .trim()方法去除首尾的空格，但是无法去除中间的空格</p><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">" ashjs klkl     "</span>;</span><br><span class="line">System.out.println(a.trim());</span><br></pre></td></tr></tbody></table></figure><h3 id="2、去除字符串中的制表符"><a href="#2、去除字符串中的制表符" class="headerlink" title="2、去除字符串中的制表符"></a>2、去除字符串中的制表符</h3><p>这种情况一般是前端的数据之类的，使用node解析后获得的字符串，会将前端的换行、退格等转义成对应的转义字符。如： \t \n \r \s等</p><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  有的操作系统\r\n连用表示是换行，有的是只需要\n就可以表示</span></span><br><span class="line"><span class="type">String</span> <span class="variable">b</span> <span class="operator">=</span> <span class="string">"a\r\nbs\tvvvv"</span>;</span><br><span class="line">System.out.println(b);</span><br><span class="line">b = b.replaceAll(<span class="string">"\n|\r|\t|\\s"</span>,<span class="string">""</span>);</span><br><span class="line">System.out.println(b);</span><br></pre></td></tr></tbody></table></figure><p><img src="/%E5%8E%BB%E9%99%A4%E7%89%B9%E6%AE%8A%E7%9A%84%E7%A9%BA%E6%A0%BC/image-20240314114654784.png" alt="image-20240314114654784"></p><h3 id="3、去除特殊的空格"><a href="#3、去除特殊的空格" class="headerlink" title="3、去除特殊的空格"></a>3、去除特殊的空格</h3><p>有的前端的&amp;nbsp; 我们使用node解析后获取的字符串会自动转空格，但是不论是使用trim()方法还是替换转义字符都去不掉这个空格。</p><p><img src="/%E5%8E%BB%E9%99%A4%E7%89%B9%E6%AE%8A%E7%9A%84%E7%A9%BA%E6%A0%BC/image-20240314112538807.png" alt="image-20240314112538807"></p><p>去除</p><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = b.replaceAll(<span class="string">"\\u00a0"</span>, <span class="string">""</span>);</span><br></pre></td></tr></tbody></table></figure><p>常见的前端空格对应的Unicode码</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nbsp   对应   \u00a0</span><br><span class="line">emsp   对应  \u2003</span><br><span class="line">ensp   对应  \u2002</span><br></pre></td></tr></tbody></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 爬虫 </tag>
+            
+            <tag> 后端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2024/03/13/hello-world/"/>
       <url>/2024/03/13/hello-world/</url>
