@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="去除特殊的空格, zhangtimo的博客">
+    <meta name="keywords" content="BigDecimal常用API, zhangtimo的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>去除特殊的空格 | zhangtimo的博客</title>
+    <title>BigDecimal常用API | zhangtimo的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">去除特殊的空格</h1>
+                    <h1 class="description center-align post-title">BigDecimal常用API</h1>
                 </div>
             </div>
         </div>
@@ -411,12 +411,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%88%AC%E8%99%AB/">
-                                <span class="chip bg-color">爬虫</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                                <span class="chip bg-color">后端</span>
+                            <a href="/tags/Java-%E8%AE%A1%E7%AE%97-BigDecimal/">
+                                <span class="chip bg-color">Java 计算 BigDecimal</span>
                             </a>
                         
                     </div>
@@ -461,26 +457,46 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="去除特殊的空格"><a href="#去除特殊的空格" class="headerlink" title="去除特殊的空格"></a>去除特殊的空格</h2><blockquote>
-<p>一般是爬虫的时间会遇到这些奇怪的情况</p>
+                <h2 id="BigDecimal常用API"><a href="#BigDecimal常用API" class="headerlink" title="BigDecimal常用API"></a>BigDecimal常用API</h2><h3 id="1、加法-add"><a href="#1、加法-add" class="headerlink" title="1、加法 add"></a>1、加法 add</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigDecimal</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">999</span>);</span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">10000</span>);</span><br><span class="line">a = a.add(b);</span><br><span class="line">System.out.println(a.add(b));<span class="comment">//10999</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2、减法-subtract"><a href="#2、减法-subtract" class="headerlink" title="2、减法 subtract"></a>2、减法 subtract</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigDecimal</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">999</span>);</span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">10000</span>);</span><br><span class="line">a = a.subtract(b);</span><br><span class="line">System.out.println(a);<span class="comment">//-9001</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3、乘法-multiply"><a href="#3、乘法-multiply" class="headerlink" title="3、乘法 multiply"></a>3、乘法 multiply</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigDecimal</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">999</span>);</span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">10000</span>);</span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">c</span> <span class="operator">=</span> a.multiply(b);</span><br><span class="line">System.out.println(<span class="string">"a*b="</span> + c);</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4、除法-divide"><a href="#4、除法-divide" class="headerlink" title="4、除法 divide"></a>4、除法 divide</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigDecimal</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">999</span>);</span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">10000</span>);</span><br><span class="line">c = a.divide(b);</span><br><span class="line">System.out.println(<span class="string">"a/b="</span> + c);</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5、求余-divideAndRemainder"><a href="#5、求余-divideAndRemainder" class="headerlink" title="5、求余 divideAndRemainder"></a>5、求余 divideAndRemainder</h3><blockquote>
+<p>divideAndRemainder方法会返回一个长度为2的BigDecimal数组，第一个为商，第二个为余数</p>
 </blockquote>
-<h3 id="1、去除字符串首尾的普通空格"><a href="#1、去除字符串首尾的普通空格" class="headerlink" title="1、去除字符串首尾的普通空格"></a>1、去除字符串首尾的普通空格</h3><p>字符串可以使用 .trim()方法去除首尾的空格，但是无法去除中间的空格</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">" ashjs klkl     "</span>;</span><br><span class="line">System.out.println(a.trim());</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigDecimal</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">999</span>);</span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">10000</span>);</span><br><span class="line">BigDecimal[] c = a.divideAndRemainder(b);</span><br><span class="line">System.out.println(<span class="string">"a/b="</span> + c[<span class="number">0</span>] + <span class="string">"余数"</span> + c[<span class="number">1</span>]);</span><br></pre></td></tr></tbody></table></figure>
 
+<h3 id="6、比较大小-compareTo"><a href="#6、比较大小-compareTo" class="headerlink" title="6、比较大小 compareTo"></a>6、比较大小 compareTo</h3><p>BigDecimal可以通过compareTo方法来进行比较。<br>返回的结果是int类型，-1表示小于，0是等于，1是大于。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigDecimal</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">999</span>);</span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (a.compareTo(b) &gt; <span class="number">0</span>) {</span><br><span class="line">    System.out.println(<span class="string">"a大于b"</span>);</span><br><span class="line">} <span class="keyword">else</span> <span class="keyword">if</span> (a.compareTo(b) == <span class="number">0</span>) {</span><br><span class="line">    System.out.println(<span class="string">"a等于b"</span>);</span><br><span class="line">} <span class="keyword">else</span> {</span><br><span class="line">    System.out.println(<span class="string">"a小于b"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
+<h3 id="7、处理小数"><a href="#7、处理小数" class="headerlink" title="7、处理小数"></a>7、处理小数</h3><blockquote>
+<p>下面是取舍模式</p>
+</blockquote>
+<ul>
+<li><p>==ROUND_UP==  ： 对于正数来说是舍弃小数后，加一，对于负数来说，舍弃小数后减一。例如：100.4，取整数为101，-100.5，取整数为-101</p>
+</li>
+<li><p>==ROUND_DOWN==  ： 直接舍弃小数或者说精确位后的小数</p>
+</li>
+<li><p>==ROUND_CEILING== : 如果 BigDecimal 是正的，则做 ROUND_UP 操作；如果为负，则做 ROUND_DOWN 操作 （取附近较大的整数）。</p>
+</li>
+<li><p>==ROUND_FLOOR== ： 如果 BigDecimal 是正的，则做 ROUND_DOWN 操作；如果为负，则做 ROUND_UP  操作 （取附近较小的整数）。</p>
+</li>
+<li><p>==ROUND_HALF_UP== ： 四舍五入，0.5向上取整 100.5 -&gt; 101</p>
+</li>
+<li><p>==ROUND_HALF_DOWN== ： 四舍五入，0.5向下取整 100.5 -&gt; 100</p>
+</li>
+<li><p>==ROUND_UNNECESSARY== ： 如果存在小数位，就抛ArithmeticException 异常。</p>
+</li>
+</ul>
+<p>单独设置</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">BigDecimal</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigDecimal</span>(<span class="string">"998.5"</span>);</span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">up</span> <span class="operator">=</span> a.setScale(<span class="number">0</span>, RoundingMode.UP);</span><br><span class="line">System.out.println( <span class="string">"up ======= "</span> + up);</span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">down</span> <span class="operator">=</span> a.setScale(<span class="number">0</span>, RoundingMode.DOWN);</span><br><span class="line">System.out.println( <span class="string">"down ======= "</span> + down);</span><br><span class="line"><span class="comment">//取最近的较大整数</span></span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">ceiling</span> <span class="operator">=</span> a.setScale(<span class="number">0</span>, RoundingMode.CEILING);</span><br><span class="line">System.out.println( <span class="string">"ceiling ======= "</span> + ceiling);</span><br><span class="line"><span class="comment">//取最近的较小整数</span></span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">floor</span> <span class="operator">=</span> a.setScale(<span class="number">0</span>, RoundingMode.FLOOR);</span><br><span class="line">System.out.println( <span class="string">"floor ======= "</span> + floor);</span><br><span class="line"><span class="comment">//四舍五入，0.5向上取整</span></span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">halfUp</span> <span class="operator">=</span> a.setScale(<span class="number">0</span>, RoundingMode.HALF_UP);</span><br><span class="line">System.out.println( <span class="string">"halfUp ======= "</span> + halfUp);</span><br><span class="line"><span class="comment">//四舍五入，0.5向下取整</span></span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">halfDown</span> <span class="operator">=</span> a.setScale(<span class="number">0</span>, RoundingMode.HALF_DOWN);</span><br><span class="line">System.out.println( <span class="string">"halfDown ======= "</span> + halfDown);</span><br></pre></td></tr></tbody></table></figure>
 
-<h3 id="2、去除字符串中的制表符"><a href="#2、去除字符串中的制表符" class="headerlink" title="2、去除字符串中的制表符"></a>2、去除字符串中的制表符</h3><p>这种情况一般是前端的数据之类的，使用node解析后获得的字符串，会将前端的换行、退格等转义成对应的转义字符。如： \t \n \r \s等</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  有的操作系统\r\n连用表示是换行，有的是只需要\n就可以表示</span></span><br><span class="line"><span class="type">String</span> <span class="variable">b</span> <span class="operator">=</span> <span class="string">"a\r\nbs\tvvvv"</span>;</span><br><span class="line">System.out.println(b);</span><br><span class="line">b = b.replaceAll(<span class="string">"\n|\r|\t|\\s"</span>,<span class="string">""</span>);</span><br><span class="line">System.out.println(b);</span><br></pre></td></tr></tbody></table></figure>
-
-<p><img src="/2024/03/14/qu-chu-te-shu-de-kong-ge/image-20240314114654784.png" alt="image-20240314114654784"></p>
-<h3 id="3、去除特殊的空格"><a href="#3、去除特殊的空格" class="headerlink" title="3、去除特殊的空格"></a>3、去除特殊的空格</h3><p>有的前端的&amp;nbsp; 我们使用node解析后获取的字符串会自动转空格，但是不论是使用trim()方法还是替换转义字符都去不掉这个空格。</p>
-<p><img src="/2024/03/14/qu-chu-te-shu-de-kong-ge/image-20240314112538807.png" alt="image-20240314112538807"></p>
-<p>去除</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = b.replaceAll(<span class="string">"\\u00a0"</span>, <span class="string">""</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>常见的前端空格对应的Unicode码</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nbsp   对应   \u00a0</span><br><span class="line">emsp   对应	  \u2003</span><br><span class="line">ensp   对应	  \u2002</span><br></pre></td></tr></tbody></table></figure>
-
+<p>除法运用</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//结果保留两位小数</span></span><br><span class="line"><span class="type">BigDecimal</span> <span class="variable">divide</span> <span class="operator">=</span> a.divide(b, <span class="number">2</span>, RoundingMode.UP);</span><br><span class="line">System.out.println(divide);</span><br></pre></td></tr></tbody></table></figure>
 
                 
             </div>
@@ -507,7 +523,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://MrZMHui.github.io/2024/03/14/qu-chu-te-shu-de-kong-ge/">https://MrZMHui.github.io/2024/03/14/qu-chu-te-shu-de-kong-ge/</a>
+                    <a href="https://MrZMHui.github.io/2024/03/14/bigdecimal-chang-yong-api/">https://MrZMHui.github.io/2024/03/14/bigdecimal-chang-yong-api/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -545,12 +561,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%88%AC%E8%99%AB/">
-                                    <span class="chip bg-color">爬虫</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                                    <span class="chip bg-color">后端</span>
+                                <a href="/tags/Java-%E8%AE%A1%E7%AE%97-BigDecimal/">
+                                    <span class="chip bg-color">Java 计算 BigDecimal</span>
                                 </a>
                             
                         </div>
@@ -724,13 +736,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/03/14/bigdecimal-chang-yong-api/">
+                <a href="/2024/03/14/httpclient-rao-guo-ssl-yan-zheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="BigDecimal常用API">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="HttpClient绕过SSL验证">
                         
-                        <span class="card-title">BigDecimal常用API</span>
+                        <span class="card-title">HttpClient绕过SSL验证</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -758,8 +770,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java-%E8%AE%A1%E7%AE%97-BigDecimal/">
-                        <span class="chip bg-color">Java 计算 BigDecimal</span>
+                    <a href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="chip bg-color">爬虫</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
+                        <span class="chip bg-color">后端</span>
                     </a>
                     
                 </div>
@@ -773,13 +789,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/03/13/hello-world/">
+                <a href="/2024/03/14/qu-chu-te-shu-de-kong-ge/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="去除特殊的空格">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">去除特殊的空格</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -790,14 +806,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web/" class="post-category">
-                                    web
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -807,8 +823,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%AC%A2%E8%BF%8E/">
-                        <span class="chip bg-color">欢迎</span>
+                    <a href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="chip bg-color">爬虫</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
+                        <span class="chip bg-color">后端</span>
                     </a>
                     
                 </div>

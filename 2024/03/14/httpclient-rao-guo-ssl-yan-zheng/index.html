@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="去除特殊的空格, zhangtimo的博客">
+    <meta name="keywords" content="HttpClient绕过SSL验证, zhangtimo的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>去除特殊的空格 | zhangtimo的博客</title>
+    <title>HttpClient绕过SSL验证 | zhangtimo的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">去除特殊的空格</h1>
+                    <h1 class="description center-align post-title">HttpClient绕过SSL验证</h1>
                 </div>
             </div>
         </div>
@@ -461,27 +461,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="去除特殊的空格"><a href="#去除特殊的空格" class="headerlink" title="去除特殊的空格"></a>去除特殊的空格</h2><blockquote>
-<p>一般是爬虫的时间会遇到这些奇怪的情况</p>
-</blockquote>
-<h3 id="1、去除字符串首尾的普通空格"><a href="#1、去除字符串首尾的普通空格" class="headerlink" title="1、去除字符串首尾的普通空格"></a>1、去除字符串首尾的普通空格</h3><p>字符串可以使用 .trim()方法去除首尾的空格，但是无法去除中间的空格</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">" ashjs klkl     "</span>;</span><br><span class="line">System.out.println(a.trim());</span><br></pre></td></tr></tbody></table></figure>
+                <h2 id="如何绕过SSL验证"><a href="#如何绕过SSL验证" class="headerlink" title="如何绕过SSL验证"></a>如何绕过SSL验证</h2><h3 id="1、在开发中有时间会遇到访问原网站会有提示有风险，需要点击高级继续访问，这个时间使用HttpClient模仿发送请求就需要绕过SSL验证，下面是如何绕过SSL验证"><a href="#1、在开发中有时间会遇到访问原网站会有提示有风险，需要点击高级继续访问，这个时间使用HttpClient模仿发送请求就需要绕过SSL验证，下面是如何绕过SSL验证" class="headerlink" title="1、在开发中有时间会遇到访问原网站会有提示有风险，需要点击高级继续访问，这个时间使用HttpClient模仿发送请求就需要绕过SSL验证，下面是如何绕过SSL验证"></a>1、在开发中有时间会遇到访问原网站会有提示有风险，需要点击高级继续访问，这个时间使用HttpClient模仿发送请求就需要绕过SSL验证，下面是如何绕过SSL验证</h3><ol>
+<li>首先创建一个工具类，将这个createSSLClientDefault()方法复制过去，导入所需要的的jar包</li>
+</ol>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.nio.charset.Charset;</span><br><span class="line"><span class="keyword">import</span> java.security.KeyManagementException;</span><br><span class="line"><span class="keyword">import</span> java.security.KeyStoreException;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</span><br><span class="line"><span class="keyword">import</span> javax.net.ssl.HostnameVerifier;</span><br><span class="line"><span class="keyword">import</span> javax.net.ssl.SSLContext;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.HttpResponse;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.client.ClientProtocolException;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.client.HttpClient;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.client.methods.HttpGet;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.client.methods.HttpPost;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.conn.ssl.NoopHostnameVerifier;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.conn.ssl.SSLConnectionSocketFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.conn.ssl.TrustStrategy;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.entity.StringEntity;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.impl.client.CloseableHttpClient;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.impl.client.HttpClients;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.ssl.SSLContextBuilder;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.util.EntityUtils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Myutils</span> {</span><br><span class="line">	<span class="comment">//创建HttpClients 绕过ssl验证所需工具类</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> CloseableHttpClient <span class="title function_">createSSLClientDefault</span><span class="params">()</span> {</span><br><span class="line">		<span class="keyword">try</span> {</span><br><span class="line">			<span class="type">SSLContext</span> <span class="variable">sslContext</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SSLContextBuilder</span>().loadTrustMaterial(<span class="literal">null</span>, <span class="keyword">new</span> <span class="title class_">TrustStrategy</span>() {</span><br><span class="line">				<span class="comment">// 信任所有</span></span><br><span class="line">				<span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isTrusted</span><span class="params">(java.security.cert.X509Certificate[] arg0, String arg1)</span></span><br><span class="line">						<span class="keyword">throws</span> java.security.cert.CertificateException {</span><br><span class="line">					</span><br><span class="line">					<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">				}</span><br><span class="line">			}).build();</span><br><span class="line">			<span class="type">HostnameVerifier</span> <span class="variable">hostnameVerifier</span> <span class="operator">=</span> NoopHostnameVerifier.INSTANCE;</span><br><span class="line">			<span class="type">SSLConnectionSocketFactory</span> <span class="variable">sslsf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SSLConnectionSocketFactory</span>(sslContext, hostnameVerifier);</span><br><span class="line">			<span class="keyword">return</span> HttpClients.custom().setSSLSocketFactory(sslsf).build();</span><br><span class="line">		} <span class="keyword">catch</span> (KeyManagementException e) {</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		} <span class="keyword">catch</span> (NoSuchAlgorithmException e) {</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		} <span class="keyword">catch</span> (KeyStoreException e) {</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> HttpClients.createDefault();</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
+<h3 id="2、接下来就可以去正常的写代码"><a href="#2、接下来就可以去正常的写代码" class="headerlink" title="2、接下来就可以去正常的写代码"></a>2、接下来就可以去正常的写代码</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用工具类中的方法创建httpClient实例</span></span><br><span class="line"><span class="type">HttpClient</span> <span class="variable">client</span> <span class="operator">=</span> SSL.createSSLClientDefault();</span><br><span class="line"></span><br><span class="line"><span class="comment">//发送HttpGet请求 模板</span></span><br><span class="line"><span class="comment">//创建HttpClient </span></span><br><span class="line"><span class="type">HttpClient</span>  <span class="variable">httpclient</span> <span class="operator">=</span> createSSLClientDefault();</span><br><span class="line"><span class="comment">//发送接口地址</span></span><br><span class="line"><span class="type">HttpGet</span> <span class="variable">httpget</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpGet</span>(<span class="string">"https://127.0.0.1/postandget/testget?iw-apikey=123&amp;iw-cmd=testget&amp;paramValue=1111"</span>);</span><br><span class="line"><span class="comment">//发送请求并接收response </span></span><br><span class="line"><span class="type">HttpResponse</span> <span class="variable">httpresponse</span> <span class="operator">=</span> httpclient.execute(httpget);</span><br><span class="line"><span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> EntityUtils.toString(httpresponse.getEntity(), <span class="string">"UTF-8"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//发送httpPost请求 模板</span></span><br><span class="line"><span class="comment">//创建HttpClient </span></span><br><span class="line"><span class="type">HttpClient</span>  <span class="variable">httpclient</span> <span class="operator">=</span> createSSLClientDefault();</span><br><span class="line"><span class="comment">//发送接口地址</span></span><br><span class="line"><span class="type">HttpPost</span> <span class="variable">httppost</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpPost</span>(<span class="string">"https://127.0.0.1/postandget/testpost"</span>);</span><br><span class="line"><span class="comment">//设置请求体格式Content-Type</span></span><br><span class="line">httppost.setHeader(<span class="string">"Content-Type"</span>, <span class="string">"application/json"</span>);</span><br><span class="line"><span class="comment">//定义String请求Json参数体</span></span><br><span class="line">httppost.setEntity(<span class="keyword">new</span> <span class="title class_">StringEntity</span>(<span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">"{\"iw-apikey\":\"123\", \"paramValue1\":\"123\",\"paramValue2\":\"1234\"}"</span>), Charset.forName(<span class="string">"UTF-8"</span>)));</span><br><span class="line"><span class="comment">//发送请求并接收response </span></span><br><span class="line"><span class="type">HttpResponse</span> <span class="variable">httpresponse</span> <span class="operator">=</span> httpclient.execute(httppost);</span><br><span class="line"><span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> EntityUtils.toString(httpresponse.getEntity(), <span class="string">"UTF-8"</span>);</span><br></pre></td></tr></tbody></table></figure>
 
-
-<h3 id="2、去除字符串中的制表符"><a href="#2、去除字符串中的制表符" class="headerlink" title="2、去除字符串中的制表符"></a>2、去除字符串中的制表符</h3><p>这种情况一般是前端的数据之类的，使用node解析后获得的字符串，会将前端的换行、退格等转义成对应的转义字符。如： \t \n \r \s等</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  有的操作系统\r\n连用表示是换行，有的是只需要\n就可以表示</span></span><br><span class="line"><span class="type">String</span> <span class="variable">b</span> <span class="operator">=</span> <span class="string">"a\r\nbs\tvvvv"</span>;</span><br><span class="line">System.out.println(b);</span><br><span class="line">b = b.replaceAll(<span class="string">"\n|\r|\t|\\s"</span>,<span class="string">""</span>);</span><br><span class="line">System.out.println(b);</span><br></pre></td></tr></tbody></table></figure>
-
-<p><img src="/2024/03/14/qu-chu-te-shu-de-kong-ge/image-20240314114654784.png" alt="image-20240314114654784"></p>
-<h3 id="3、去除特殊的空格"><a href="#3、去除特殊的空格" class="headerlink" title="3、去除特殊的空格"></a>3、去除特殊的空格</h3><p>有的前端的&amp;nbsp; 我们使用node解析后获取的字符串会自动转空格，但是不论是使用trim()方法还是替换转义字符都去不掉这个空格。</p>
-<p><img src="/2024/03/14/qu-chu-te-shu-de-kong-ge/image-20240314112538807.png" alt="image-20240314112538807"></p>
-<p>去除</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = b.replaceAll(<span class="string">"\\u00a0"</span>, <span class="string">""</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>常见的前端空格对应的Unicode码</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nbsp   对应   \u00a0</span><br><span class="line">emsp   对应	  \u2003</span><br><span class="line">ensp   对应	  \u2002</span><br></pre></td></tr></tbody></table></figure>
-
-
+<h3 id="3、这样就可以绕过SSL验证，获取与原网站相同的响应，再去解析"><a href="#3、这样就可以绕过SSL验证，获取与原网站相同的响应，再去解析" class="headerlink" title="3、这样就可以绕过SSL验证，获取与原网站相同的响应，再去解析"></a>3、这样就可以绕过SSL验证，获取与原网站相同的响应，再去解析</h3>
                 
             </div>
             <hr/>
@@ -507,7 +494,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://MrZMHui.github.io/2024/03/14/qu-chu-te-shu-de-kong-ge/">https://MrZMHui.github.io/2024/03/14/qu-chu-te-shu-de-kong-ge/</a>
+                    <a href="https://MrZMHui.github.io/2024/03/14/httpclient-rao-guo-ssl-yan-zheng/">https://MrZMHui.github.io/2024/03/14/httpclient-rao-guo-ssl-yan-zheng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -724,13 +711,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/03/14/bigdecimal-chang-yong-api/">
+                <a href="/2024/03/14/httpclient-pei-zhi-dai-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="BigDecimal常用API">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="HttpClient配置代理">
                         
-                        <span class="card-title">BigDecimal常用API</span>
+                        <span class="card-title">HttpClient配置代理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -758,8 +745,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java-%E8%AE%A1%E7%AE%97-BigDecimal/">
-                        <span class="chip bg-color">Java 计算 BigDecimal</span>
+                    <a href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="chip bg-color">爬虫</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -773,13 +764,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/03/13/hello-world/">
+                <a href="/2024/03/14/bigdecimal-chang-yong-api/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="BigDecimal常用API">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">BigDecimal常用API</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -790,14 +781,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web/" class="post-category">
-                                    web
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -807,8 +798,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%AC%A2%E8%BF%8E/">
-                        <span class="chip bg-color">欢迎</span>
+                    <a href="/tags/Java-%E8%AE%A1%E7%AE%97-BigDecimal/">
+                        <span class="chip bg-color">Java 计算 BigDecimal</span>
                     </a>
                     
                 </div>

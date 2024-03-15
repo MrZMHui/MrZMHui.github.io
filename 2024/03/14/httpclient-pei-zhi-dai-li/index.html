@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="去除特殊的空格, zhangtimo的博客">
+    <meta name="keywords" content="HttpClient配置代理, zhangtimo的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>去除特殊的空格 | zhangtimo的博客</title>
+    <title>HttpClient配置代理 | zhangtimo的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">去除特殊的空格</h1>
+                    <h1 class="description center-align post-title">HttpClient配置代理</h1>
                 </div>
             </div>
         </div>
@@ -415,8 +415,8 @@
                                 <span class="chip bg-color">爬虫</span>
                             </a>
                         
-                            <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                                <span class="chip bg-color">后端</span>
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -461,26 +461,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="去除特殊的空格"><a href="#去除特殊的空格" class="headerlink" title="去除特殊的空格"></a>去除特殊的空格</h2><blockquote>
-<p>一般是爬虫的时间会遇到这些奇怪的情况</p>
-</blockquote>
-<h3 id="1、去除字符串首尾的普通空格"><a href="#1、去除字符串首尾的普通空格" class="headerlink" title="1、去除字符串首尾的普通空格"></a>1、去除字符串首尾的普通空格</h3><p>字符串可以使用 .trim()方法去除首尾的空格，但是无法去除中间的空格</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">a</span> <span class="operator">=</span> <span class="string">" ashjs klkl     "</span>;</span><br><span class="line">System.out.println(a.trim());</span><br></pre></td></tr></tbody></table></figure>
-
-
-
-<h3 id="2、去除字符串中的制表符"><a href="#2、去除字符串中的制表符" class="headerlink" title="2、去除字符串中的制表符"></a>2、去除字符串中的制表符</h3><p>这种情况一般是前端的数据之类的，使用node解析后获得的字符串，会将前端的换行、退格等转义成对应的转义字符。如： \t \n \r \s等</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  有的操作系统\r\n连用表示是换行，有的是只需要\n就可以表示</span></span><br><span class="line"><span class="type">String</span> <span class="variable">b</span> <span class="operator">=</span> <span class="string">"a\r\nbs\tvvvv"</span>;</span><br><span class="line">System.out.println(b);</span><br><span class="line">b = b.replaceAll(<span class="string">"\n|\r|\t|\\s"</span>,<span class="string">""</span>);</span><br><span class="line">System.out.println(b);</span><br></pre></td></tr></tbody></table></figure>
-
-<p><img src="/2024/03/14/qu-chu-te-shu-de-kong-ge/image-20240314114654784.png" alt="image-20240314114654784"></p>
-<h3 id="3、去除特殊的空格"><a href="#3、去除特殊的空格" class="headerlink" title="3、去除特殊的空格"></a>3、去除特殊的空格</h3><p>有的前端的&amp;nbsp; 我们使用node解析后获取的字符串会自动转空格，但是不论是使用trim()方法还是替换转义字符都去不掉这个空格。</p>
-<p><img src="/2024/03/14/qu-chu-te-shu-de-kong-ge/image-20240314112538807.png" alt="image-20240314112538807"></p>
-<p>去除</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = b.replaceAll(<span class="string">"\\u00a0"</span>, <span class="string">""</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>常见的前端空格对应的Unicode码</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nbsp   对应   \u00a0</span><br><span class="line">emsp   对应	  \u2003</span><br><span class="line">ensp   对应	  \u2002</span><br></pre></td></tr></tbody></table></figure>
-
+                <h2 id="HttpClient配置代理"><a href="#HttpClient配置代理" class="headerlink" title="HttpClient配置代理"></a>HttpClient配置代理</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//要访问的网址</span></span><br><span class="line"><span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">"http://www.baidu.com"</span>;</span><br><span class="line"><span class="keyword">try</span> {</span><br><span class="line">	<span class="comment">//设置代理的 IP、端口号、协议（替换自己的）</span></span><br><span class="line">	<span class="type">HttpHost</span> <span class="variable">proxy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpHost</span>(<span class="string">"自己的代理Ip"</span>,代理的端口号,<span class="string">"http"</span>);</span><br><span class="line">	<span class="comment">//设置要访问的HttpHost，即目标站点的HttpHost。  IP、端口号、协议（替换自己的）</span></span><br><span class="line">	<span class="type">HttpHost</span> <span class="variable">target</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpHost</span>(<span class="string">"www.baidu.mn"</span>,<span class="number">80</span>,<span class="string">"http"</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//设置认证</span></span><br><span class="line">	<span class="type">CredentialsProvider</span> <span class="variable">provider</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BasicCredentialsProvider</span>();</span><br><span class="line">	<span class="comment">//第一个参数对应代理httpHost，第二个参数设置代理的用户名和密码，如果代理不需要用户名和密码，填空</span></span><br><span class="line">	provider.setCredentials(<span class="keyword">new</span> <span class="title class_">AuthScope</span>(proxy), <span class="keyword">new</span> <span class="title class_">UsernamePasswordCredentials</span>(<span class="string">"代理用户名"</span>, <span class="string">"代理密码"</span>));</span><br><span class="line">	<span class="comment">//实例化CloseableHttpClient对象</span></span><br><span class="line">	<span class="type">CloseableHttpClient</span> <span class="variable">httpClient</span> <span class="operator">=</span> HttpClients.custom().setDefaultCredentialsProvider(provider).build();</span><br><span class="line">	<span class="comment">//把代理设置到请求配置里</span></span><br><span class="line">	<span class="type">RequestConfig</span> <span class="variable">requestConfig</span> <span class="operator">=</span> RequestConfig.custom().setProxy(proxy).build();</span><br><span class="line"></span><br><span class="line">	<span class="comment">//创建请求实例</span></span><br><span class="line">	<span class="type">HttpGet</span> <span class="variable">get</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HttpGet</span>(url);</span><br><span class="line">	<span class="comment">//将配置设置到请求实例中，如果还有请求头信息，自行设置</span></span><br><span class="line">	get.setConfig(requestConfig);</span><br><span class="line">	<span class="comment">//发送请求并获得相应</span></span><br><span class="line">	<span class="type">CloseableHttpResponse</span> <span class="variable">res</span> <span class="operator">=</span> httpClient.execute(target,get);</span><br><span class="line">	<span class="comment">//获取响应码</span></span><br><span class="line">	<span class="type">int</span> <span class="variable">statusCode</span> <span class="operator">=</span> res.getStatusLine().getStatusCode();</span><br><span class="line">	<span class="comment">//将响应内容转化为String字符串</span></span><br><span class="line">	<span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> EntityUtils.toString(res.getEntity());</span><br><span class="line"></span><br><span class="line">	} <span class="keyword">catch</span> (ClientProtocolException e) {</span><br><span class="line">	LOGGER.info(<span class="string">"异常"</span>+e);</span><br><span class="line">} <span class="keyword">catch</span> (IOException e) {</span><br><span class="line">	LOGGER.info(<span class="string">"异常"</span>+e);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
                 
             </div>
@@ -507,7 +488,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://MrZMHui.github.io/2024/03/14/qu-chu-te-shu-de-kong-ge/">https://MrZMHui.github.io/2024/03/14/qu-chu-te-shu-de-kong-ge/</a>
+                    <a href="https://MrZMHui.github.io/2024/03/14/httpclient-pei-zhi-dai-li/">https://MrZMHui.github.io/2024/03/14/httpclient-pei-zhi-dai-li/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -549,8 +530,8 @@
                                     <span class="chip bg-color">爬虫</span>
                                 </a>
                             
-                                <a href="/tags/%E5%90%8E%E7%AB%AF/">
-                                    <span class="chip bg-color">后端</span>
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -720,17 +701,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/03/14/bigdecimal-chang-yong-api/">
+                <a href="/2024/03/14/httpclient-pei-zhi-dai-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="BigDecimal常用API">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="HttpClient配置代理">
                         
-                        <span class="card-title">BigDecimal常用API</span>
+                        <span class="card-title">HttpClient配置代理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -740,9 +722,63 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-14
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="chip bg-color">爬虫</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/03/14/httpclient-rao-guo-ssl-yan-zheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="HttpClient绕过SSL验证">
+                        
+                        <span class="card-title">HttpClient绕过SSL验证</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -758,57 +794,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java-%E8%AE%A1%E7%AE%97-BigDecimal/">
-                        <span class="chip bg-color">Java 计算 BigDecimal</span>
+                    <a href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="chip bg-color">爬虫</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/03/13/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-13
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/web/" class="post-category">
-                                    web
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%AC%A2%E8%BF%8E/">
-                        <span class="chip bg-color">欢迎</span>
+                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
+                        <span class="chip bg-color">后端</span>
                     </a>
                     
                 </div>
