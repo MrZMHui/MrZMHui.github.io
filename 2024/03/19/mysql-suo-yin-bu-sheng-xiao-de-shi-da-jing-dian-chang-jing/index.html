@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Map中的compute、computeIfAbsent和computeIfPresent的使用和区别, zhangtimo的博客">
+    <meta name="keywords" content="MySQL索引不生效的十大经典场景, zhangtimo的博客">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Map中的compute、computeIfAbsent和computeIfPresent的使用和区别 | zhangtimo的博客</title>
+    <title>MySQL索引不生效的十大经典场景 | zhangtimo的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -290,12 +290,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Map中的compute、computeIfAbsent和computeIfPresent的使用和区别</h1>
+                    <h1 class="description center-align post-title">MySQL索引不生效的十大经典场景</h1>
                 </div>
             </div>
         </div>
@@ -411,8 +411,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">MySQL</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%B4%A2%E5%BC%95/">
+                                <span class="chip bg-color">索引</span>
                             </a>
                         
                     </div>
@@ -423,8 +427,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Java/" class="post-category">
-                                Java
+                            <a href="/categories/MySQL/" class="post-category">
+                                MySQL
                             </a>
                         
                     </div>
@@ -436,7 +440,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-03-15
+                    2024-03-19
                 </div>
                 
 
@@ -457,52 +461,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Map中的compute、computeIfAbsent和computeIfPresent的使用和区别"><a href="#Map中的compute、computeIfAbsent和computeIfPresent的使用和区别" class="headerlink" title="Map中的compute、computeIfAbsent和computeIfPresent的使用和区别"></a>Map中的compute、computeIfAbsent和computeIfPresent的使用和区别</h2><blockquote>
-<p>先准备一个简单的map数据吧</p>
+                <h2 id="MySQL索引不生效的十大经典场景"><a href="#MySQL索引不生效的十大经典场景" class="headerlink" title="MySQL索引不生效的十大经典场景"></a>MySQL索引不生效的十大经典场景</h2><blockquote>
+<p>MySQL索引不生效的十大经典场景</p>
 </blockquote>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Long, String&gt; testMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">testMap.put(<span class="number">1L</span>, <span class="string">"张三"</span>);</span><br><span class="line">testMap.put(<span class="number">2L</span>, <span class="string">"李四"</span>);</span><br><span class="line">testMap.put(<span class="number">3L</span>, <span class="string">"王五"</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<h3 id="1、computeIfAbsent"><a href="#1、computeIfAbsent" class="headerlink" title="1、computeIfAbsent"></a>1、computeIfAbsent</h3><blockquote>
-<p>简单来说这个方法就是根据第一个参数key，去查询map，==只有当返回值为null即Map中查询不到对应的数据时，向Map中添加一条数据==</p>
-</blockquote>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试，没有新增</span></span><br><span class="line">testMap.computeIfAbsent(<span class="number">4L</span>, aLong -&gt; <span class="string">"computeIfAbsent"</span>);</span><br><span class="line"><span class="comment">//有返回值，不做任何操作</span></span><br><span class="line">testMap.computeIfAbsent(<span class="number">3L</span>, aLong -&gt; <span class="string">"computeIfAbsent2"</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>操作之前的截图</p>
-<img src="/2024/03/15/map-zhong-de-compute-computeifabsent-he-computeifpresent-de-shi-yong-he-qu-bie/cc4172757996496ab58fa316ef2ad212.png" class="" title="在这里插入图片描述">
-<p>没有的新增</p>
-<img src="/2024/03/15/map-zhong-de-compute-computeifabsent-he-computeifpresent-de-shi-yong-he-qu-bie/8653ca3461934f719c18e433d4f650d1.png" class="" title="在这里插入图片描述">
-<p>有的不做操作</p>
-<img src="/2024/03/15/map-zhong-de-compute-computeifabsent-he-computeifpresent-de-shi-yong-he-qu-bie/66775c91dffb47f183d295dfeb63090d.png" class="" title="在这里插入图片描述">
-
-
-
-<h3 id="2、computeIfPresent"><a href="#2、computeIfPresent" class="headerlink" title="2、computeIfPresent"></a>2、computeIfPresent</h3><blockquote>
-<p>简单来说这个方法就是根据第一个参数key，去查询map，如果==查询到了就更新对应的值，如果查询不到，不做任何操作==</p>
-</blockquote>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Map中有就更新，没有不做操作</span></span><br><span class="line">testMap.computeIfPresent(<span class="number">2L</span>, (aLong, s) -&gt; <span class="string">"computeIfPresent"</span>);</span><br><span class="line"><span class="comment">//Map中没有不做操作</span></span><br><span class="line">testMap.computeIfPresent(<span class="number">5L</span>, (aLong, s) -&gt; <span class="string">"computeIfPresent2"</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>有就更新</p>
-<img src="/2024/03/15/map-zhong-de-compute-computeifabsent-he-computeifpresent-de-shi-yong-he-qu-bie/c9aaaa52559d4dd4b1f7e6f82e5f62eb.png" class="" title="在这里插入图片描述">
-
-<p>没有不做操作</p>
-<img src="/2024/03/15/map-zhong-de-compute-computeifabsent-he-computeifpresent-de-shi-yong-he-qu-bie/b25830c2a5014b4e93188da517f6ae46.png" class="" title="在这里插入图片描述">
-
-
-
-<h3 id="3、compute"><a href="#3、compute" class="headerlink" title="3、compute"></a>3、compute</h3><blockquote>
-<p>简单来说这个方法就是根据第一个参数key，去查询map，==无论是否查询到，都会执行第二个方法体，没有就新增，有就更新值==</p>
-</blockquote>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">testMap.compute(<span class="number">1L</span>, (aLong, s) -&gt; <span class="string">"compute"</span>);</span><br><span class="line">testMap.compute(<span class="number">6L</span>, (aLong, s) -&gt; <span class="string">"compute2"</span>);</span><br></pre></td></tr></tbody></table></figure>
-
-<p>有就更新</p>
-<img src="/2024/03/15/map-zhong-de-compute-computeifabsent-he-computeifpresent-de-shi-yong-he-qu-bie/6e9a4b4754094ac4a1bdcf3b31293512.png" class="" title="在这里插入图片描述">
-
-
-
-<p>没有就新增</p>
-<img src="/2024/03/15/map-zhong-de-compute-computeifabsent-he-computeifpresent-de-shi-yong-he-qu-bie/038a64f019b84ff496fbce023023bed9.png" class="" title="在这里插入图片描述">
-
-<h3 id="4、完整代码"><a href="#4、完整代码" class="headerlink" title="4、完整代码"></a>4、完整代码</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Long, String&gt; testMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">testMap.put(<span class="number">1L</span>, <span class="string">"张三"</span>);</span><br><span class="line">testMap.put(<span class="number">2L</span>, <span class="string">"李四"</span>);</span><br><span class="line">testMap.put(<span class="number">3L</span>, <span class="string">"王五"</span>);</span><br><span class="line"><span class="comment">//测试，没有新增</span></span><br><span class="line">testMap.computeIfAbsent(<span class="number">4L</span>, aLong -&gt; <span class="string">"computeIfAbsent"</span>);</span><br><span class="line"><span class="comment">//有返回值，不做任何操作</span></span><br><span class="line">testMap.computeIfAbsent(<span class="number">3L</span>, aLong -&gt; <span class="string">"computeIfAbsent2"</span>);</span><br><span class="line"><span class="comment">//Map中有就更新，没有不做操作</span></span><br><span class="line">testMap.computeIfPresent(<span class="number">2L</span>, (aLong, s) -&gt; <span class="string">"computeIfPresent"</span>);</span><br><span class="line"><span class="comment">//Map中没有不做操作</span></span><br><span class="line">testMap.computeIfPresent(<span class="number">5L</span>, (aLong, s) -&gt; <span class="string">"computeIfPresent2"</span>);</span><br><span class="line"><span class="comment">//有就更新</span></span><br><span class="line">testMap.compute(<span class="number">1L</span>, (aLong, s) -&gt; <span class="string">"compute"</span>);</span><br><span class="line"><span class="comment">//没有就新增</span></span><br><span class="line">testMap.compute(<span class="number">6L</span>, (aLong, s) -&gt; <span class="string">"compute2"</span>);</span><br></pre></td></tr></tbody></table></figure>
 
                 
             </div>
@@ -529,7 +490,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://MrZMHui.github.io/2024/03/15/map-zhong-de-compute-computeifabsent-he-computeifpresent-de-shi-yong-he-qu-bie/">https://MrZMHui.github.io/2024/03/15/map-zhong-de-compute-computeifabsent-he-computeifpresent-de-shi-yong-he-qu-bie/</a>
+                    <a href="https://MrZMHui.github.io/2024/03/19/mysql-suo-yin-bu-sheng-xiao-de-shi-da-jing-dian-chang-jing/">https://MrZMHui.github.io/2024/03/19/mysql-suo-yin-bu-sheng-xiao-de-shi-da-jing-dian-chang-jing/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -567,8 +528,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">MySQL</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%B4%A2%E5%BC%95/">
+                                    <span class="chip bg-color">索引</span>
                                 </a>
                             
                         </div>
@@ -742,13 +707,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/03/18/mysqldump-bei-fen-ku-biao-jiao-ben/">
+                <a href="/2024/03/19/linux-fang-huo-qiang-xiang-guan-ming-ling/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="mysqldump备份库表脚本">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Linux防火墙相关命令">
                         
-                        <span class="card-title">mysqldump备份库表脚本</span>
+                        <span class="card-title">Linux防火墙相关命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -759,8 +724,61 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-18
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-19
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/">
+                        <span class="chip bg-color">防火墙</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/03/18/mysql-yu-ju-zhi-xing-shun-xu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="MySQL语句执行顺序">
+                        
+                        <span class="card-title">MySQL语句执行顺序</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -776,65 +794,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
                     <a href="/tags/MySQL/">
                         <span class="chip bg-color">MySQL</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%84%9A%E6%9C%AC/">
-                        <span class="chip bg-color">脚本</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/03/15/easyconnect-lian-jie-hou-xian-shi-wei-fen-pei-xu-ni-di-zhi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="EasyConnect连接后显示未分配虚拟地址">
-                        
-                        <span class="card-title">EasyConnect连接后显示未分配虚拟地址</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-15
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/VPN/" class="post-category">
-                                    VPN
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/EasyConnect/">
-                        <span class="chip bg-color">EasyConnect</span>
                     </a>
                     
                 </div>
