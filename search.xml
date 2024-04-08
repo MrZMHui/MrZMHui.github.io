@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>使用xshell生成密钥对连接服务器</title>
+      <link href="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/"/>
+      <url>/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="使用xshell生成密钥对连接服务器"><a href="#使用xshell生成密钥对连接服务器" class="headerlink" title="使用xshell生成密钥对连接服务器"></a>使用xshell生成密钥对连接服务器</h2><h3 id="1、生成密钥（公钥与私钥）"><a href="#1、生成密钥（公钥与私钥）" class="headerlink" title="1、生成密钥（公钥与私钥）"></a>1、生成密钥（公钥与私钥）</h3><blockquote><p>打开xshell，在菜单栏点击工具，在弹出的菜单中选择（新建用户密钥生成向导）。如下图：</p></blockquote><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408143411690-1712558057188-1.png" class="" title="image-20240408143411690">+<blockquote><p>在弹出的对话框中，密钥类型选择RSA公钥加密算法，密钥长度任意选择，长度越长，安全性越高</p></blockquote><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408143621820-1712558183837-3.png" class="" title="image-20240408143621820"><blockquote><p>点击下一步，等待密钥生成</p></blockquote><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408143721166-1712558242616-5.png" class="" title="image-20240408143721166"><blockquote><p>继续点击下一步，密钥名称随便命名，密钥的密码自己定义，也可以不设置密码，留白</p></blockquote><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408143815050-1712558297298-7.png" class="" title="image-20240408143815050"><blockquote><p>输入完成以后点击下一步</p></blockquote><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408144021976-1712558423371-9.png" class="" title="image-20240408144021976"><blockquote><p>密钥生成完毕，这里显示的是公钥，可以复制密钥后保存，也可以直接保存公钥到文件</p></blockquote><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408144153827-1712558515258-11.png" class="" title="image-20240408144153827"><blockquote><p>最后点击完成，可以在工具–&gt;用户密钥管理界面看到</p></blockquote><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408144414886-1712558656325-13.png" class="" title="image-20240408144414886"><h3 id="2、放置公钥到服务器"><a href="#2、放置公钥到服务器" class="headerlink" title="2、放置公钥到服务器"></a>2、放置公钥到服务器</h3><blockquote><p>使用xshell登录到服务器，如果是root用户，进入到 /root/.ssh目录。如果是普通用户，进入到 /home/对应账户名/.ssh目录下</p><p>使用xftp将公钥上传到当前目录下</p><p>如果没有.ssh这个目录就需要手动创建</p></blockquote><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建文件夹</span></span><br><span class="line">mkdir -p /root/.ssh/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">赋予权限</span></span><br><span class="line">chmod 700 /root/.ssh</span><br></pre></td></tr></tbody></table></figure><blockquote><p>将密钥添加到 authorized_keys 中。如果之前没有这个文件，手动创建后可以直接使用下面的命令将公钥设置到authorized_keys中</p></blockquote><figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建文件</span></span><br><span class="line">touch authorized_keys</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">将密钥内容复制过去</span></span><br><span class="line">cat 密钥文件名称 &gt; authorized_keys </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">赋予文件权限 - 对应自己的用户位置</span></span><br><span class="line">chmod 600 /root/.ssh/authorized_keys</span><br></pre></td></tr></tbody></table></figure><blockquote><p>如果之前已经有这个文件，就老老实实的vi编辑在后面加，否则会把之前的覆盖掉</p></blockquote><h3 id="3、获取私钥"><a href="#3、获取私钥" class="headerlink" title="3、获取私钥"></a>3、获取私钥</h3><blockquote><p>点击工具，在弹出的窗口中选择，用户密钥管理者</p></blockquote><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408145247065-1712559168780-15.png" class="" title="image-20240408145247065"><blockquote><p>选择你生成的密钥，点击导出，这个时间导出的就是私钥，后缀不带.pub</p></blockquote><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408145425492-1712559267294-17.png" class="" title="image-20240408145425492"><blockquote><p>你选择保存的位置以后，如果当时设置的有密码，会再让你输入当时设置的密码</p></blockquote><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408145539594-1712559341928-19.png" class="" title="image-20240408145539594"><h3 id="4、验证登录是否可用"><a href="#4、验证登录是否可用" class="headerlink" title="4、验证登录是否可用"></a>4、验证登录是否可用</h3><blockquote><p>xshell新建会话，用户身份验证方式选择Public Key，在点击设置，导入自己的私钥，并输入密钥的密码</p></blockquote><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408151445496-1712560486888-21.png" class="" title="image-20240408151445496"><blockquote><p>输入完成后，点击会话，看能否连接上</p></blockquote><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408151543469-1712560545711-23.png" class="" title="image-20240408151543469"><h3 id="5、可能遇到的问题"><a href="#5、可能遇到的问题" class="headerlink" title="5、可能遇到的问题"></a>5、可能遇到的问题</h3><h4 id="5-1、提示所选的用户密钥未在远程主机上注册，请再试一次"><a href="#5-1、提示所选的用户密钥未在远程主机上注册，请再试一次" class="headerlink" title="5.1、提示所选的用户密钥未在远程主机上注册，请再试一次"></a>5.1、提示所选的用户密钥未在远程主机上注册，请再试一次</h4><img src="/2024/04/08/shi-yong-xshell-sheng-cheng-mi-yao-dui-lian-jie-fu-wu-qi/image-20240408152337023-1712561018014-25.png" class="" title="image-20240408152337023"><blockquote><p>可能的原因</p></blockquote><ol><li>服务器的用户名填错了。这里就是因为这个原因</li><li>服务器上公钥设置没有设置好</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> xshell </category>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> xshell </tag>
+            
+            <tag> linux </tag>
+            
+            <tag> 密钥 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Springboot第一次请求接口特别慢的bug</title>
       <link href="/2024/03/28/springboot-di-yi-ci-qing-qiu-jie-kou-te-bie-man-de-bug/"/>
       <url>/2024/03/28/springboot-di-yi-ci-qing-qiu-jie-kou-te-bie-man-de-bug/</url>
